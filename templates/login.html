@@ -1,0 +1,46 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#  <head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Logowanie </title>#}
+{#  </head>#}
+{#  <body>#}
+{#    <h2>Zaloguj:</h2>#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#      <label for="login">Login:</label>#}
+{#      <input type="text" id="login" name="login" required>#}
+{#      <br><br>#}
+{#      <label for="password">Hasło:</label>#}
+{#      <input type="password" id="password" name="password" required>#}
+{#      <br><br>#}
+{#      <input type="submit" value="Zaloguj">#}
+{#    </form>#}
+{##}
+{#  </body>#}
+{#</html>#}
+
+{% load static %}  <link rel="stylesheet" href="{% static '/login_form.css' %}">
+
+<html>
+  <head>
+    <title>Logowanie</title>
+  </head>
+  <body>
+    <h2>Logowanie</h2>
+    <form method="post">
+      {% csrf_token %}
+      <label for="login">Login:</label>
+      <input type="text" id="login" name="login" required>
+      <br>
+      <label for="password">Hasło:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+    {% if error_message %}
+      <p style="color:red;">{{ error_message }}</p>
+        <br><br>
+    {% endif %}
+      <input type="submit" value="Zaloguj">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <style>
+        .navbar ul {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            background-color: #333;
+            color: #fff;
+            padding: 0 20px;
+            list-style: none;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        /* Style dla postów */
+        .post {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        /* Style dla obrazków */
+        .post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style dla komentarzy */
+        .comments {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .comment {
+            margin-bottom: 20px;
+        }
+
+        /* Style dla guzików */
+        .btn {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Quiz</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="post">
+        <img src="post1-image.jpg" alt="Post 1 image">
+        <h2>Tytuł postu 1</h2>
+        <p>Treść postu 1</p>
+        <div class="interactions">
+            <button class="like">Lajkuj</button>
+            <button class="comment">Skomentuj</button>
+        </div>
+        <section class="comments">
+            <h3>Komentarze:</h3>
+            <div class="comment">
+                <p>Komentarz 1</p>
+            </div>
+            <div class="comment">
+                <p>Komentarz 2</p>
+            </div>
+        </section>
+    </section>
+    <section class="post">
+        <img src="post2-image.jpg" alt="Post 2 image">
+        <h2>Tytuł postu 2</h2>
+        <p>Treść postu 2</p>
+        <div class="interactions">
+            <button class="like">Lajkuj</button>
+            <button class="comment">Skomentuj</button>
+        </div>
+        <section class="comments">
+            <h3>Komentarze:</h3>
+            <div class="comment">
+                <p>Komentarz 1</p>
+            </div>
+            <div class="comment">
+                <p>Komentarz 2</p>
+            </div>
+        </section>
+    </section>
+</main>
+</body>
+</html>

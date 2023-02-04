@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}  <link rel="stylesheet" href="{% static '/login_form.css' %}">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Zarejestruj się! </title>
+  </head>
+  <body>
+    <h2>Rejestracja:</h2>
+    <form method="post">
+        {% csrf_token %}
+      <label for="login">Podaj login:</label>
+      <input type="text" id="login" name="login" required>
+      <br><br>
+        <label for="email">Podaj email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+      <label for="password">Ustaw hasło:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+      <input type="submit" value="Zarejestruj">
+        <br><br>
+        <a> Masz już konto?</a>
+        <a href = "/boolseye/login/">Zaloguj się</a>
+    </form>
+
+  </body>
+</html>
