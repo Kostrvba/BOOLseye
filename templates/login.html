@@ -1,32 +1,22 @@
-{#<!DOCTYPE html>#}
-{#<html>#}
-{#  <head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Logowanie </title>#}
-{#  </head>#}
-{#  <body>#}
-{#    <h2>Zaloguj:</h2>#}
-{#    <form method="post">#}
-{#        {% csrf_token %}#}
-{#      <label for="login">Login:</label>#}
-{#      <input type="text" id="login" name="login" required>#}
-{#      <br><br>#}
-{#      <label for="password">Hasło:</label>#}
-{#      <input type="password" id="password" name="password" required>#}
-{#      <br><br>#}
-{#      <input type="submit" value="Zaloguj">#}
-{#    </form>#}
-{##}
-{#  </body>#}
-{#</html>#}
-
 {% load static %}  <link rel="stylesheet" href="{% static '/login_form.css' %}">
+{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
 
 <html>
   <head>
     <title>Logowanie</title>
   </head>
   <body>
+  <header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'main' %}">Strona główna</a></li>
+            <li><a href="{% url 'account' %}">Profil</a></li>
+            <li><a href="{% url 'support' %}">Support</a></li>
+            <li><a href="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+        </ul>
+    </nav>
+</header>
     <h2>Logowanie</h2>
     <form method="post">
       {% csrf_token %}
@@ -41,6 +31,9 @@
         <br><br>
     {% endif %}
       <input type="submit" value="Zaloguj">
+    <br><br>
+    <a> Nie masz konta?</a>
+        <a href = "/boolseye/register/">Zarejestruj się</a>
     </form>
   </body>
 </html>

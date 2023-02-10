@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 {% load static %}  <link rel="stylesheet" href="{% static '/login_form.css' %}">
+{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
+
 <html>
   <head>
     <meta charset="UTF-8">
     <title>Zarejestruj się! </title>
   </head>
   <body>
+  <header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'main' %}">Strona główna</a></li>
+            <li><a href="{% url 'account' %}">Profil</a></li>
+            <li><a href="{% url 'support' %}">Support</a></li>
+            <li><a href="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+        </ul>
+    </nav>
+</header>
     <h2>Rejestracja:</h2>
     <form method="post">
         {% csrf_token %}
@@ -23,6 +36,7 @@
         <a> Masz już konto?</a>
         <a href = "/boolseye/login/">Zaloguj się</a>
     </form>
+
 
   </body>
 </html>

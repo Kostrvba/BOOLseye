@@ -1,117 +1,100 @@
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
 <html>
 
+<script>
+$(document).ready(function(){
+  $(".question").click(function(){
+    $(this).next().toggle();
+  });
+});
+document.addEventListener("DOMContentLoaded", function(event) {
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+</script>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Strona główna</title>
-    <style>
-        .navbar ul {
-            display: flex;
-            align-items: center;
-            height: 60px;
-            background-color: #333;
-            color: #fff;
-            padding: 0 20px;
-            list-style: none;
-        }
-
-        .navbar li {
-            margin-right: 20px;
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-
-        /* Style dla postów */
-        .post {
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-
-        .post h2 {
-            margin-top: 0;
-        }
-
-        /* Style dla obrazków */
-        .post img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Style dla komentarzy */
-        .comments {
-            margin-top: 20px;
-            padding-left: 20px;
-        }
-
-        .comment {
-            margin-bottom: 20px;
-        }
-
-        /* Style dla guzików */
-        .btn {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-    </style>
-
 </head>
 <body>
 <header>
     <nav class="navbar">
         <ul>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="/boolseye/account/">Profil</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Quiz</a></li>
+            <li><a href="{% url 'main' %}">Strona główna</a></li>
+            <li><a href="{% url 'account' %}">Profil</a></li>
+            <li><a href="{% url 'support' %}">Support</a></li>
+            <li><a href="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
         </ul>
     </nav>
 </header>
 <main>
-    <section class="post">
-        <img src="post1-image.jpg" alt="Post 1 image">
-        <h2>Tytuł postu 1</h2>
-        <p>Treść postu 1</p>
-        <div class="interactions">
-            <button class="like">Lajkuj</button>
-            <button class="comment">Skomentuj</button>
-        </div>
-        <section class="comments">
-            <h3>Komentarze:</h3>
-            <div class="comment">
-                <p>Komentarz 1</p>
+{#    <label for="sort-by">Sortuj według:</label>#}
+{#  <select id="sort-by" name="sort-by">#}
+{#    <option value="name">Data dodania</option>#}
+{#    <option value="date">Popularność</option>#}
+{#    <option value="price">Losowo</option>#}
+{#  </select>#}
+{#  <button type="submit">Akceptuj</button>#}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <br><br>
+    <br><br>
+{#                <label for="image">Obraz:</label>#}
+{#                <input type="file" id="image" name="image">#}
+    <br>
+                <label for="question">Pytanie:</label>
+                <input type="text" id="question" name="question" required>
+    <br>
+                <label for="answer">Odpowiedź:</label>
+                <input type="text" id="answer" name="answer" required>
+    <br>
+            <input type="submit" value="Dodaj post">
+    </form>
+    <br><br>
+    <br><br>
+
+    {% for post in posts %}
+
+<div class="post">
+    <p class="added">{{ post.profile.user }}, {{ post.created }}</p>
+    <p class="question">{{ post.question }}</p>
+    <p class="answer" style="display:none;">{{ post.answer }}</p>
+    <img src="{{ post.images.url }}">
+    <div class="interactions">
+        <form action="{% url 'main' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <button class="like" type="submit">Pomocne</button>
+            <span class="like-count">{{ post.likes.count }}</span>
+        </form>
+        <form action="{% url 'main' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="comment_id" value="{{ post.id }}">
+            <textarea name="text" id="comment_text" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Skomentuj">
+        </form>
+        <br>
+            <br>
+            <button class="save">Zapisz</button>
+    </div>
+    <h3>Komentarze:</h3>
+    <div class="comments">
+        {% for comment in post.post_comments.all %}
+        <div class="comment">
+            <p>{{ comment.text }} by {{ comment.profile.user.username }}</p>
             </div>
-            <div class="comment">
-                <p>Komentarz 2</p>
-            </div>
-        </section>
-    </section>
-    <section class="post">
-        <img src="post2-image.jpg" alt="Post 2 image">
-        <h2>Tytuł postu 2</h2>
-        <p>Treść postu 2</p>
-        <div class="interactions">
-            <button class="like">Lajkuj</button>
-            <button class="comment">Skomentuj</button>
-        </div>
-        <section class="comments">
-            <h3>Komentarze:</h3>
-            <div class="comment">
-                <p>Komentarz 1</p>
-            </div>
-            <div class="comment">
-                <p>Komentarz 2</p>
-            </div>
-        </section>
-    </section>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+
 </main>
 </body>
 </html>

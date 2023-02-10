@@ -1,10 +1,23 @@
 <!DOCTYPE html>
+{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
 <html lang="en">
 <head>
     <a> Zalogowano!</a>
         <a href = "/boolseye/main/">Wróć na stronę główną</a>
+        <a href = "/boolseye/account/">Sprawdź swój profil</a>
 </head>
 <body>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'main' %}">Strona główna</a></li>
+            <li><a href="{% url 'account' %}">Profil</a></li>
+            <li><a href="{% url 'support' %}">Support</a></li>
+            <li><a href="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+        </ul>
+    </nav>
+</header>
 
 </body>
 </html>

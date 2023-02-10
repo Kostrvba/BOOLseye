@@ -1,10 +1,22 @@
 <!DOCTYPE html>
+{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'main' %}">Strona główna</a></li>
+            <li><a href="{% url 'account' %}">Profil</a></li>
+            <li><a href="{% url 'support' %}">Support</a></li>
+            <li><a href="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+        </ul>
+    </nav>
+</header>
+<a> Quiz z 10 losowych pytań - soon</a>
 </body>
 </html>

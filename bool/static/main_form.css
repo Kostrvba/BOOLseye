@@ -1,0 +1,87 @@
+.navbar ul {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            background-color: #333;
+            color: #fff;
+            padding: 0 20px;
+            list-style: none;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .post {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .comments {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .comment {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .post {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.answer {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.interactions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+.comment {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+}
