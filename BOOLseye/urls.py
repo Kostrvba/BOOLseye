@@ -27,5 +27,6 @@ urlpatterns = [
     path('boolseye/account/', views.Account.as_view(), name="account"),
     path('boolseye/', views.Main.as_view(), name="main"),
     path('boolseye/quiz/', views.Quiz.as_view(), name="quiz"),
+    path('boolseye/account/questions/', views.Questions.as_view())
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

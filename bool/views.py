@@ -1,11 +1,11 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from bool.models import Post, Profile, Comments
-from django.core.paginator import Paginator
+# from django.core.paginator import Paginator
+import random
 
 from django.contrib.auth.models import User
 
@@ -93,4 +93,22 @@ class Main(View):
 
 class Quiz(View):
     def get(self, request):
-        return render(request, 'quiz.html')
+        i = 1
+        list = Post.objects.all()
+        posts = []
+        while i <= 5:
+            post = random.choice(list)
+            posts.append(post)
+            list = list.exclude(id=post.id)
+            i += 1
+        context = {"posts": posts}
+        return render(request, 'quiz.html', context)
+
+
+class Questions(View):
+    def get(self, request):
+        user_id = request.session.get('_auth_user_id')
+        profile = Profile.objects.get(user_id=user_id)
+        posts = Post.objects.filter(profile_id=profile)
+        context = {"posts": posts}
+        return render(request, 'questions.html', context)

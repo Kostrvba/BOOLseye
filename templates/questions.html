@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             localStorage.setItem('scrollpos', window.scrollY);
         };
 </script>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,12 +35,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         </ul>
     </nav>
 </header>
-<a> 5 losowych postów: </a>
-
+<a> Witaj {{ user.username }}, oto twoje pytania: </a>
 {% for post in posts %}
 
 <div class="post">
-    <p class="added">{{ post.profile.user }}</p>
     <p class="question">{{ post.question }}</p>
     <p class="answer" style="display:none;">{{ post.answer }}</p>
     <img src="{{ post.images.url }}">
