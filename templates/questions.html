@@ -42,7 +42,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     <p class="question">{{ post.question }}</p>
     <p class="answer" style="display:none;">{{ post.answer }}</p>
     <img src="{{ post.images.url }}">
+    <br>
+        <span class="like-count">pomocne - {{ post.likes.count }}</span>
+        <button class="edit">Edytuj</button>
+        <button class="delete">Usuń</button>
+
     </div>
+    <h3>Komentarze:</h3>
+    <div class="comments">
+        {% for comment in post.post_comments.all %}
+        <div class="comment">
+            <p>{{ comment.text }} by {{ comment.profile.user.username }}</p>
+            </div>
+        {% endfor %}
 {% endfor %}
 </body>
 </html>
