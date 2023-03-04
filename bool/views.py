@@ -112,3 +112,6 @@ class Questions(View):
         posts = Post.objects.filter(profile_id=profile)
         context = {"posts": posts}
         return render(request, 'questions.html', context)
+
+    # def post(self, request):
+

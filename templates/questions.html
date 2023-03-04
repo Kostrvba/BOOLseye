@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     <p class="answer" style="display:none;">{{ post.answer }}</p>
     <img src="{{ post.images.url }}">
     <br>
-        <span class="like-count">pomocne - {{ post.likes.count }}</span>
-        <button class="edit">Edytuj</button>
-        <button class="delete">Usuń</button>
+        <span class="like-count">pomocne +{{ post.likes.count }}</span>
+        <button class="edit">Edytuj post</button>
+        <button class="delete">Usuń post</button>
 
     </div>
     <h3>Komentarze:</h3>
