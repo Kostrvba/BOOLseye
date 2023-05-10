@@ -24,7 +24,7 @@ class AddUser(View):
         user.save()
         profile = Profile.objects.create(user=user)
         profile.save()
-        return redirect('/boolseye/login')
+        return redirect('/login')
 
 
 class Login(View):
@@ -38,7 +38,7 @@ class Login(View):
         user = authenticate(request, username=nickname, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/boolseye')
+            return redirect('/')
         else:
             error_message = "Błędny login lub hasło."
             return render(request, 'login.html', {'error_message': error_message})
@@ -88,7 +88,7 @@ class Main(View):
             profile = Profile.objects.get(user=request.user)
             new_post = Post.objects.create(question=question, answer=answer, image=image, profile=profile)
             new_post.save()
-        return redirect('/boolseye')
+        return redirect('/')
 
 
 class Quiz(View):

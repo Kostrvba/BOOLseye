@@ -21,12 +21,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('boolseye/register/', views.AddUser.as_view(), name="register"),
-    path('boolseye/login/', views.Login.as_view(), name="login"),
-    path('boolseye/support/', views.Support.as_view(), name="support"),
-    path('boolseye/account/', views.Account.as_view(), name="account"),
-    path('boolseye/', views.Main.as_view(), name="main"),
-    path('boolseye/quiz/', views.Quiz.as_view(), name="quiz"),
-    path('boolseye/account/questions/', views.Questions.as_view())
+    path('register/', views.AddUser.as_view(), name="register"),
+    path('login/', views.Login.as_view(), name="login"),
+    path('support/', views.Support.as_view(), name="support"),
+    path('account/', views.Account.as_view(), name="account"),
+    path('', views.Main.as_view(), name="main"),
+    path('quiz/', views.Quiz.as_view(), name="quiz"),
+    path('account/questions/', views.Questions.as_view())
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
