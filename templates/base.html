@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
-<html lang="en">
+{% load static %} <link rel="stylesheet" href="{% static '/main_form.css' %}">
+<html lang="pl">
 <head>
-    <title>BOOLSEYE</title>
-    <a> Zalogowano!</a>
-        <a href = "/boolseye/main/">Wróć na stronę główną</a>
-        <a href = "/boolseye/account/">Sprawdź swój profil</a>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body>
 <header>
     <nav class="navbar">
         <ul>
@@ -19,6 +16,11 @@
         </ul>
     </nav>
 </header>
+    <body>
 
-</body>
+        {% block content %}
+
+        {% endblock %}
+
+    </body>
 </html>
