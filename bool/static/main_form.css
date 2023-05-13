@@ -85,3 +85,8 @@
     background-color: #e6e6e6;
     border: 1px solid #ccc;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
