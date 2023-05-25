@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+
 from bool.models import Post, Profile, Comments
 # from django.core.paginator import Paginator
 import random
@@ -113,5 +115,9 @@ class Questions(View):
         context = {"posts": posts}
         return render(request, 'questions.html', context)
 
-    # def post(self, request):
 
+def logout_view(request):
+    logout(request)
+    return redirect(settings.LOGOUT_REDIRECT_URL)
+
+    # def post(self, request):

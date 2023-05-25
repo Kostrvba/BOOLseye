@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-{% load static %}  <link rel="stylesheet" href="{% static '/main_form.css' %}">
+{% load static %}  <link rel="stylesheet" href="{% static '/css/main_form.css' %}">
 <html>
 
 <script>
@@ -24,17 +24,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
     <title>BOOLSEYE</title>
 </head>
 <body>
-<header>
+
+{% if user.is_authenticated %}
+ <header>
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'main' %}">Strona główna</a></li>
             <li><a href="{% url 'account' %}">Profil</a></li>
             <li><a href="{% url 'support' %}">Support</a></li>
             <li><a href="{% url 'quiz' %}">Quiz</a></li>
-            <li><a href="{% url 'login' %}">Logowanie</a></li>
+            <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+
         </ul>
     </nav>
 </header>
+
+ {% else %}
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'main' %}">Strona główna</a></li>
+            <li><a href="{% url 'support' %}">Support</a></li>
+            <li><a href="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+ {% endif %}
 <a> Witaj {{ user.username }}, oto twoje pytania: </a>
 {% for post in posts %}
 
